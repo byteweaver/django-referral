@@ -12,3 +12,15 @@ class Campaign(models.Model):
     def __unicode__(self):
         return self.name
 
+class Referrer(models.Model):
+    name = models.CharField(_("Name"), max_length=255)
+    description models.TextField(_("Description"), blank=True, null=True)
+    creation_date = models.DateTimeField(_("Creation date"), auto_now_add=True)
+    campaign = models.ForeignKey(_("Campaign"), blank=True, null=True)
+
+    class Meta:
+        ordering['name']
+
+    def __unicode__(self):
+        return self.name
+
