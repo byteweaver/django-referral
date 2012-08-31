@@ -14,6 +14,7 @@ class ReferrerAdmin(admin.ModelAdmin):
 
 class UserReferrerAdmin(admin.ModelAdmin):
     list_display = ('user', 'referrer')
+    raw_id_fields = ('user',)
 
 admin.site.register(Campaign, CampaignAdmin)
 admin.site.register(Referrer, ReferrerAdmin)
