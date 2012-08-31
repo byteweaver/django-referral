@@ -11,6 +11,8 @@ class Campaign(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = _("Campaign")
+        verbose_name_plural = _("Campaigns")
 
     def __unicode__(self):
         return self.name
@@ -23,6 +25,8 @@ class Referrer(models.Model):
 
     class Meta:
         ordering = ['name']
+        verbose_name = _("Referrer")
+        verbose_name_plural = _("Referrers")
 
     def __unicode__(self):
         return self.name
@@ -45,6 +49,8 @@ class UserReferrer(models.Model):
 
     class Meta:
         ordering = ['referrer__name']
+        verbose_name = _("User Referrer")
+        verbose_name_plural = _("User Referrers")
 
     def __unicode__(self):
         return "%s -> %s" % (self.user.username, self.referrer.name)
