@@ -8,6 +8,8 @@ import settings
 class Campaign(models.Model):
     name = models.CharField(_("Name"), max_length=255, unique=True)
     description = models.TextField(_("Description"), blank=True, null=True)
+    pattern = models.CharField(_("Referrer pattern"), blank=True, max_length=255,
+            help_text="All auto created referrers containing this pattern will be associated with this campaign")
 
     class Meta:
         ordering = ['name']
