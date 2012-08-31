@@ -10,7 +10,7 @@ def read(fname):
 setup(
     name='django-referral',
     version=referral.__version__,
-    description='A small django application for referral marketing',
+    description='A small django application for marketing using referral links',
     long_description=read('README.md'),
     license=read('LICENSE'),
     author='akuryou',
