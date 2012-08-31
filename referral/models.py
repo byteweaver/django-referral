@@ -31,6 +31,10 @@ class Referrer(models.Model):
     def __unicode__(self):
         return self.name
 
+    def count_users(self):
+        return self.users.count()
+    count_users.short_description = _("User count")
+
 class UserReferrerManager(models.Manager):
     def apply_referrer(self, user, request):
         try:
