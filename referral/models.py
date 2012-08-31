@@ -44,6 +44,13 @@ class Referrer(models.Model):
         return self.users.count()
     count_users.short_description = _("User count")
 
+    def match_campaign(self):
+        for campaign in Campaign.objects.exclude(pattern=""):
+            if campaign.pattern in self.name:
+                self.campaign = campaign
+                self.save()
+                break
+
 class UserReferrerManager(models.Manager):
     def apply_referrer(self, user, request):
         try:
