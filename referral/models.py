@@ -17,6 +17,13 @@ class Campaign(models.Model):
     def __unicode__(self):
         return self.name
 
+    def count_users(self):
+        count = 0
+        for referrer in self.referrers.all():
+            count += referrer.count_users()
+        return count
+    count_users.short_description = _("User count")
+
 class Referrer(models.Model):
     name = models.CharField(_("Name"), max_length=255, unique=True)
     description = models.TextField(_("Description"), blank=True, null=True)
