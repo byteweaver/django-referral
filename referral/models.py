@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -23,4 +24,14 @@ class Referrer(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class UserReferrer(models.Model):
+    user = models.OneToOneField(User, verbose_name=_("User"), related_name='referrer')
+    referrer = models.ForeignKey(Referrer, verbose_name=_("Referrer"), related_name='users')
+
+    class Meta:
+        ordering = ['referrer__name']
+
+    def __unicode__(self):
+        return "%s -> %s" % (self.user.username, self.referrer.name)
 
