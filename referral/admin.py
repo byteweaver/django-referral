@@ -7,10 +7,11 @@ class ReferrerInine(admin.TabularInline):
     extra = 0
 
 class CampaignAdmin(admin.ModelAdmin):
+    list_display = ('name', 'count_users')
     inlines = (ReferrerInine, )
 
 class ReferrerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'campaign', 'creation_date')
+    list_display = ('name', 'campaign', 'creation_date', 'count_users')
 
 class UserReferrerAdmin(admin.ModelAdmin):
     list_display = ('user', 'referrer')
