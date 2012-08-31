@@ -8,6 +8,8 @@ import settings
 class Campaign(models.Model):
     name = models.CharField(_("Name"), max_length=255, unique=True)
     description = models.TextField(_("Description"), blank=True, null=True)
+    pattern = models.CharField(_("Referrer pattern"), blank=True, max_length=255,
+            help_text="All auto created referrers containing this pattern will be associated with this campaign")
 
     class Meta:
         ordering = ['name']
@@ -41,6 +43,13 @@ class Referrer(models.Model):
     def count_users(self):
         return self.users.count()
     count_users.short_description = _("User count")
+
+    def match_campaign(self):
+        for campaign in Campaign.objects.exclude(pattern=""):
+            if campaign.pattern in self.name:
+                self.campaign = campaign
+                self.save()
+                break
 
 class UserReferrerManager(models.Manager):
     def apply_referrer(self, user, request):
