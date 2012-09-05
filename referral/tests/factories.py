@@ -21,6 +21,6 @@ class ReferrerFactory(factory.Factory):
 class UserReferrerFactory(factory.Factory):
     FACTORY_FOR = UserReferrer
 
-    user = UserFactory()
-    referrer = ReferrerFactory()
+    user = factory.LazyAttribute(lambda a: UserFactory())
+    referrer = factory.LazyAttribute(lambda a: ReferrerFactory())
 
