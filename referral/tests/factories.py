@@ -1,7 +1,10 @@
+from django.contrib.auth.models import User
 import factory
 
-from referral.models import Campaign, Referrer
+from referral.models import Campaign, Referrer, UserReferrer
 
+class UserFactory(factory.Factory):
+    FACTORY_FOR = User
 
 class CampaignFactory(factory.Factory):
     FACTORY_FOR = Campaign
@@ -14,4 +17,10 @@ class ReferrerFactory(factory.Factory):
 
     name = factory.Sequence(lambda n: "Test Referrer %s" % n)
     description = "Some long test description"
+
+class UserReferrerFactory(factory.Factory):
+    FACTORY_FOR = UserReferrer
+
+    user = UserFactory()
+    referrer = ReferrerFactory()
 
