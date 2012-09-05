@@ -1,0 +1,5 @@
+Django>=1.4.1
+django-nose
+coverage
+django-coverage
+
