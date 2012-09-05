@@ -23,6 +23,7 @@ lead him to your website.
 * Completely configurable to your needs.
 * Django-south support
 * No dependencies
+* 100% Test coverage
 
 ## Download
 
@@ -87,3 +88,13 @@ Defines weather unknown referrers shall be autocreated
 Defines weather referrest should be associated to campaigns automatically using patterns
 
 	Default: True
+
+## Testing
+
+Just run the makefile to set up a virtual environment for testing
+
+	make
+
+Start the test runner
+
+	make test

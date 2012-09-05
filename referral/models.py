@@ -62,7 +62,7 @@ class UserReferrerManager(models.Manager):
             user_referrer.save()
 
 class UserReferrer(models.Model):
-    user = models.OneToOneField(User, verbose_name=_("User"), related_name='referrer')
+    user = models.OneToOneField(User, verbose_name=_("User"), related_name='user_referrer')
     referrer = models.ForeignKey(Referrer, verbose_name=_("Referrer"), related_name='users')
 
     objects = UserReferrerManager()
