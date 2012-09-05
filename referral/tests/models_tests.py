@@ -13,6 +13,9 @@ class CampaignTestCase(TestCase):
         self.assertEqual(obj.count_users(),0)
         ReferrerFactory(campaign=obj)
         self.assertEqual(obj.count_users(),0)
+        ref = ReferrerFactory(campaign=obj)
+        UserReferrerFactory(referrer=ref)
+        self.assertEqual(obj.count_users(),1)
 
 class ReferrerTestCase(TestCase):
     def test_model(self):
