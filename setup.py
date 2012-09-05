@@ -20,7 +20,7 @@ setup(
     install_requires=[
         'Django',
     ],
-    tests_requires=[
+    tests_require=[
         'django-nose',
         'coverage',
         'django-coverage',
