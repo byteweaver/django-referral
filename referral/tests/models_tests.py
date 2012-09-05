@@ -18,3 +18,13 @@ class ReferrerTestCase(TestCase):
     def test_model(self):
         obj = ReferrerFactory()
         self.assertTrue(obj.pk)
+
+    def test_match_campaign(self):
+        obj = ReferrerFactory()
+        obj.match_campaign()
+        CampaignFactory()
+        self.assertIsNone(obj.campaign)
+        campaign = CampaignFactory(pattern="Test Referrer")
+        obj.match_campaign()
+        self.assertEqual(obj.campaign, campaign)
+
