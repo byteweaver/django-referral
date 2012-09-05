@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from referral.tests.factories import CampaignFactory, ReferrerFactory
+from referral.tests.factories import CampaignFactory, ReferrerFactory, UserReferrerFactory
 
 
 class CampaignTestCase(TestCase):
@@ -27,4 +27,9 @@ class ReferrerTestCase(TestCase):
         campaign = CampaignFactory(pattern="Test Referrer")
         obj.match_campaign()
         self.assertEqual(obj.campaign, campaign)
+
+class UserReferrerTestCase(TestCase):
+    def test_model(self):
+        obj = UserReferrerFactory()
+        self.assertTrue(obj.pk)
 
