@@ -20,4 +20,10 @@ setup(
     install_requires=[
         'Django',
     ],
+    tests_requires=[
+        'django-nose',
+        'coverage',
+        'django-coverage',
+        'factory_boy',
+    ],
 )
