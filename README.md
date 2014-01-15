@@ -4,7 +4,7 @@ A small django application for marketing using referral links
 
 ## What is this app good for?
 
-Imagine you got a nice website runnig and you want to make some marketing in order to gain more users.
+Imagine you got a nice website running and you want to make some marketing in order to gain more users.
 This can be achieved by spreading links/banners over the internet pointing to your website.
 Now in order to find out how your banners performed you need to know how many users registered
 after clicking on one of your banners. To tell them apart you add some unique GET parameter to
