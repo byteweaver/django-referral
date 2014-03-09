@@ -54,7 +54,7 @@ class Referrer(models.Model):
 class UserReferrerManager(models.Manager):
     def apply_referrer(self, user, request):
         try:
-            referrer = request.session.pop(settings.SESSION_KEY)
+            referrer = Referrer.objects.get(pk=request.session.pop(settings.SESSION_KEY))
         except KeyError:
             pass
         else:

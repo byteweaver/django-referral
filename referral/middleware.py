@@ -17,5 +17,5 @@ class ReferrerMiddleware():
                     referrer.match_campaign()
             finally:
                 if not referrer is None:
-                    request.session[settings.SESSION_KEY] = referrer
+                    request.session[settings.SESSION_KEY] = referrer.pk
 
