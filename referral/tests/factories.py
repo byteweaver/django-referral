@@ -1,6 +1,6 @@
-from django.contrib.auth.models import User
 import factory
 
+from referral.compat import User
 from referral.models import Campaign, Referrer, UserReferrer
 
 class UserFactory(factory.django.DjangoModelFactory):

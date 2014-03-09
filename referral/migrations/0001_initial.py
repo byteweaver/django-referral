@@ -4,6 +4,7 @@ from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
 
+from referral.compat import AUTH_USER_MODEL
 
 class Migration(SchemaMigration):
 
@@ -29,7 +30,7 @@ class Migration(SchemaMigration):
         # Adding model 'UserReferrer'
         db.create_table('referral_userreferrer', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.OneToOneField')(related_name='referrer', unique=True, to=orm['auth.User'])),
+            ('user', self.gf('django.db.models.fields.related.OneToOneField')(related_name='referrer', unique=True, to=orm[AUTH_USER_MODEL])),
             ('referrer', self.gf('django.db.models.fields.related.ForeignKey')(related_name='users', to=orm['referral.Referrer'])),
         ))
         db.send_create_signal('referral', ['UserReferrer'])
@@ -60,8 +61,8 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
-        'auth.user': {
-            'Meta': {'object_name': 'User'},
+        AUTH_USER_MODEL: {
+            'Meta': {'object_name': AUTH_USER_MODEL.split('.')[-1]},
             'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
@@ -101,7 +102,7 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "['referrer__name']", 'object_name': 'UserReferrer'},
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'referrer': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'users'", 'to': "orm['referral.Referrer']"}),
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'related_name': "'referrer'", 'unique': 'True', 'to': "orm['auth.User']"})
+            'user': ('django.db.models.fields.related.OneToOneField', [], {'related_name': "'referrer'", 'unique': 'True', 'to': "orm['%s']" % AUTH_USER_MODEL})
         }
     }
 
