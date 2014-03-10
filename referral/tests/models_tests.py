@@ -55,7 +55,7 @@ class UserReferrerTestCase(TestCase):
         referrer = ReferrerFactory()
         user = UserFactory()
         request = HttpRequest()
-        request.session = {settings.SESSION_KEY: referrer}
+        request.session = {settings.SESSION_KEY: referrer.pk}
         UserReferrer.objects.apply_referrer(user, request)
         self.assertEqual(user.user_referrer.referrer, referrer)
 
