@@ -1,7 +1,7 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from .compat import User
 import settings
 
 
@@ -54,7 +54,7 @@ class Referrer(models.Model):
 class UserReferrerManager(models.Manager):
     def apply_referrer(self, user, request):
         try:
-            referrer = request.session.pop(settings.SESSION_KEY)
+            referrer = Referrer.objects.get(pk=request.session.pop(settings.SESSION_KEY))
         except KeyError:
             pass
         else:
