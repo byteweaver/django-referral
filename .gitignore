@@ -5,3 +5,5 @@ local_settings.py
 /env/
 *.swp
 coverage/
+.tox
+*egg-info
