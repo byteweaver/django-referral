@@ -13,7 +13,7 @@ class ReferrerMiddleware():
                 if settings.AUTO_CREATE:
                     referrer = Referrer(name=referrer_name)
                     referrer.save()
-                if settings.AUTO_ASSOCIATE:
+                if referrer is not None and settings.AUTO_ASSOCIATE:
                     referrer.match_campaign()
             finally:
                 if not referrer is None:
