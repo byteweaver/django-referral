@@ -91,9 +91,7 @@ Defines weather referrest should be associated to campaigns automatically using 
 
 ## Testing
 
-Just run the makefile to set up a virtual environment for testing
-
-	make
+First setup [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/)
 
 Start the test runner
 
