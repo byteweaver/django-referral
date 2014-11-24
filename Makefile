@@ -1,6 +1,7 @@
 VENV_FOLDER=env
 PIP_BIN=$(VENV_FOLDER)/bin/pip
 PYTHON_BIN=$(VENV_FOLDER)/bin/python
+COVERAGE_BINARY=$(VENV_FOLDER)/bin/coverage
 
 all: environment requirements
 
@@ -10,6 +11,10 @@ environment:
 requirements:
 	$(PIP_BIN) install -r requirements.txt
 
-test:
-	$(PYTHON_BIN) referral/tests/runtests.py
+test: requirements
+	$(PYTHON_BINARY) env/bin/django-admin.py test --settings=referral.tests.settings
 
+coverage: requirements
+		$(COVERAGE_BINARY) erase
+		$(COVERAGE_BINARY) run --branch --source=referral env/bin/django-admin.py test --settings=referral.tests.settings
+		$(COVERAGE_BINARY) html
