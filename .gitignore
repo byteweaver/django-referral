@@ -5,3 +5,8 @@ local_settings.py
 /env/
 *.swp
 coverage/
+.coverage
+.ropeproject/
+htmlcov/
+.tox
+dist/
