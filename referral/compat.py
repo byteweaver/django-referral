@@ -10,4 +10,3 @@ if django.VERSION >= (1, 5):
     User = settings.AUTH_USER_MODEL
 else:
     from django.contrib.auth.models import User
-
