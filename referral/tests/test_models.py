@@ -39,6 +39,10 @@ class UserReferrerTestCase(TestCase):
         obj = UserReferrerFactory()
         self.assertTrue(obj.pk)
 
+    def test_repr(self):
+        obj = UserReferrerFactory()
+        self.assertEqual(unicode(obj), "{} -> {}".format(obj.user.username, obj.referrer.name))
+
     def test_manager_apply_referrer_no_ref(self):
         user = UserFactory()
         request = HttpRequest()
