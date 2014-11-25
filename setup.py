@@ -17,13 +17,12 @@ setup(
     author_email='contact@byteweaver.net',
     url='https://github.com/byteweaver/django-referral',
     packages=find_packages(),
-    install_requires=[
-        'Django',
-    ],
-    tests_require=[
-        'django-nose',
-        'coverage',
-        'django-coverage',
-        'factory_boy',
-    ],
+    classifiers=[
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+    ]
 )
