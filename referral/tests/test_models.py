@@ -43,7 +43,7 @@ class UserReferrerTestCase(TestCase):
 
     def test_repr(self):
         obj = UserReferrerFactory()
-        self.assertEqual(unicode(obj), "{} -> {}".format(obj.user.username, obj.referrer.name))
+        self.assertEqual(str(obj), "{} -> {}".format(obj.user.username, obj.referrer.name))
 
     def test_manager_apply_referrer_no_ref(self):
         user = UserFactory()

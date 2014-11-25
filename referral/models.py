@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from .compat import User
-import settings
+from . import settings
 
 
 class Campaign(models.Model):
@@ -18,6 +18,9 @@ class Campaign(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def __str__(self):
+        return self.__unicode__()
 
     def count_users(self):
         count = 0
@@ -39,6 +42,9 @@ class Referrer(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def __str__(self):
+        return self.__unicode__()
 
     def count_users(self):
         return self.users.count()
@@ -75,3 +81,5 @@ class UserReferrer(models.Model):
     def __unicode__(self):
         return "%s -> %s" % (self.user.username, self.referrer.name)
 
+    def __str__(self):
+        return self.__unicode__()
