@@ -9,7 +9,7 @@ class Campaign(models.Model):
     name = models.CharField(_("Name"), max_length=255, unique=True)
     description = models.TextField(_("Description"), blank=True, null=True)
     pattern = models.CharField(_("Referrer pattern"), blank=True, max_length=255,
-            help_text="All auto created referrers containing this pattern will be associated with this campaign")
+        help_text="All auto created referrers containing this pattern will be associated with this campaign")
 
     class Meta:
         ordering = ['name']
@@ -28,6 +28,7 @@ class Campaign(models.Model):
             count += referrer.count_users()
         return count
     count_users.short_description = _("User count")
+
 
 class Referrer(models.Model):
     name = models.CharField(_("Name"), max_length=255, unique=True)
@@ -57,6 +58,7 @@ class Referrer(models.Model):
                 self.save()
                 break
 
+
 class UserReferrerManager(models.Manager):
     def apply_referrer(self, user, request):
         try:
@@ -66,6 +68,7 @@ class UserReferrerManager(models.Manager):
         else:
             user_referrer = UserReferrer(user=user, referrer=referrer)
             user_referrer.save()
+
 
 class UserReferrer(models.Model):
     user = models.OneToOneField(User, verbose_name=_("User"), related_name='user_referrer')

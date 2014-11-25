@@ -20,4 +20,3 @@ class ReferrerMiddlewareTest(TestCase):
         self.request.GET[settings.GET_PARAMETER] = "new_ref"
         self.ref_middleware.process_request(self.request)
         self.assertEqual(Referrer.objects.all()[0].name, "new_ref")
-

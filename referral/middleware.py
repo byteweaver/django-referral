@@ -16,6 +16,5 @@ class ReferrerMiddleware():
                 if referrer is not None and settings.AUTO_ASSOCIATE:
                     referrer.match_campaign()
             finally:
-                if not referrer is None:
+                if referrer is not None:
                     request.session[settings.SESSION_KEY] = referrer.pk
-

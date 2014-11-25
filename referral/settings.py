@@ -11,4 +11,3 @@ AUTO_CREATE = getattr(settings, 'REFERRAL_AUTO_CREATE', True)
 
 # If this is set auto created referrers will be associated to a campaign that defines a matching pattern. Default: True
 AUTO_ASSOCIATE = getattr(settings, 'REFERRAL_AUTO_ASSOCIATE', True)
-
