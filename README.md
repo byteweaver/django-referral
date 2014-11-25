@@ -97,9 +97,17 @@ Just run the makefile to set up a virtual environment for testing
 
 	make
 
-Start the test runner
+For simple test
 
 	make test
+
+For coverage report
+
+	make coverage
+
+For full test in all supported environment (requires tox)
+
+	tox
 
 ## Changelog
 ### V1.0.0
