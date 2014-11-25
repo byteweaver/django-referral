@@ -48,12 +48,8 @@ class UserReferrerTestCase(TestCase):
         request = HttpRequest()
         request.session = {}
         UserReferrer.objects.apply_referrer(user, request)
-        try:
+        with self.assertRaises(UserReferrer.DoesNotExist):
             user.user_referrer
-        except UserReferrer.DoesNotExist:
-            pass
-        else:
-            assert False, "Referrer should not exist!"
 
     def test_manager_apply_referrer(self):
         referrer = ReferrerFactory()
