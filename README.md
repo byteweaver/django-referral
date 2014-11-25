@@ -21,9 +21,11 @@ lead him to your website.
   to register. That way you can link to any site and not necessarily a register page.
 * Very easy integration.
 * Completely configurable to your needs.
-* Django-south support
+* django 1.7 migrations + legacy south support
 * No dependencies
 * 100% Test coverage
+* Supports django 1.4 - 1.7
+* supports python 2 + 3
 
 ## Download
 
@@ -98,3 +100,11 @@ Just run the makefile to set up a virtual environment for testing
 Start the test runner
 
 	make test
+
+## Changelog
+### V1.0.0
+* add django 1.7 support
+* add pyton3 support
+* additional test cases
+* code cleanup
+* some pep8 fixes
