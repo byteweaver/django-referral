@@ -13,12 +13,13 @@ class CampaignTestCase(TestCase):
 
     def test_count_users(self):
         obj = CampaignFactory()
-        self.assertEqual(obj.count_users(),0)
+        self.assertEqual(obj.count_users(), 0)
         ReferrerFactory(campaign=obj)
-        self.assertEqual(obj.count_users(),0)
+        self.assertEqual(obj.count_users(), 0)
         ref = ReferrerFactory(campaign=obj)
         UserReferrerFactory(referrer=ref)
-        self.assertEqual(obj.count_users(),1)
+        self.assertEqual(obj.count_users(), 1)
+
 
 class ReferrerTestCase(TestCase):
     def test_model(self):
@@ -34,22 +35,23 @@ class ReferrerTestCase(TestCase):
         obj.match_campaign()
         self.assertEqual(obj.campaign, campaign)
 
+
 class UserReferrerTestCase(TestCase):
     def test_model(self):
         obj = UserReferrerFactory()
         self.assertTrue(obj.pk)
+
+    def test_repr(self):
+        obj = UserReferrerFactory()
+        self.assertEqual(unicode(obj), "{} -> {}".format(obj.user.username, obj.referrer.name))
 
     def test_manager_apply_referrer_no_ref(self):
         user = UserFactory()
         request = HttpRequest()
         request.session = {}
         UserReferrer.objects.apply_referrer(user, request)
-        try:
+        with self.assertRaises(UserReferrer.DoesNotExist):
             user.user_referrer
-        except UserReferrer.DoesNotExist:
-            pass
-        else:
-            assert False, "Referrer should not exist!"
 
     def test_manager_apply_referrer(self):
         referrer = ReferrerFactory()
@@ -58,4 +60,3 @@ class UserReferrerTestCase(TestCase):
         request.session = {settings.SESSION_KEY: referrer.pk}
         UserReferrer.objects.apply_referrer(user, request)
         self.assertEqual(user.user_referrer.referrer, referrer)
-
