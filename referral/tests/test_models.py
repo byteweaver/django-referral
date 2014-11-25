@@ -13,12 +13,13 @@ class CampaignTestCase(TestCase):
 
     def test_count_users(self):
         obj = CampaignFactory()
-        self.assertEqual(obj.count_users(),0)
+        self.assertEqual(obj.count_users(), 0)
         ReferrerFactory(campaign=obj)
-        self.assertEqual(obj.count_users(),0)
+        self.assertEqual(obj.count_users(), 0)
         ref = ReferrerFactory(campaign=obj)
         UserReferrerFactory(referrer=ref)
-        self.assertEqual(obj.count_users(),1)
+        self.assertEqual(obj.count_users(), 1)
+
 
 class ReferrerTestCase(TestCase):
     def test_model(self):
@@ -33,6 +34,7 @@ class ReferrerTestCase(TestCase):
         campaign = CampaignFactory(pattern="Test Referrer")
         obj.match_campaign()
         self.assertEqual(obj.campaign, campaign)
+
 
 class UserReferrerTestCase(TestCase):
     def test_model(self):
@@ -58,4 +60,3 @@ class UserReferrerTestCase(TestCase):
         request.session = {settings.SESSION_KEY: referrer.pk}
         UserReferrer.objects.apply_referrer(user, request)
         self.assertEqual(user.user_referrer.referrer, referrer)
-
