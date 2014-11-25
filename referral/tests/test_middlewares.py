@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.http import HttpRequest
 
 from referral.middleware import ReferrerMiddleware
-from referral.models import Referrer 
+from referral.models import Referrer
 from referral import settings
 
 

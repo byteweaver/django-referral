@@ -1,5 +1,5 @@
-import settings
-from models import Referrer
+from . import settings
+from .models import Referrer
 
 
 class ReferrerMiddleware():

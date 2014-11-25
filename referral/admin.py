@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import Campaign, Referrer, UserReferrer
+from .models import Campaign, Referrer, UserReferrer
 
 class ReferrerInine(admin.TabularInline):
     model = Referrer
