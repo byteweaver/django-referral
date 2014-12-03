@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 
 from .compat import User
 from . import settings
@@ -8,6 +9,10 @@ from . import settings
 class Campaign(models.Model):
     name = models.CharField(_("Name"), max_length=255, unique=True)
     description = models.TextField(_("Description"), blank=True, null=True)
+    start_date = models.DateTimeField(_("Start Date"), blank=True, null=True,
+                                      help_text=_("The date when this campaign will start"))
+    end_date = models.DateTimeField(_("Expiration Date"), blank=True, null=True,
+                                      help_text=_("The date when this campaign will end"))
     pattern = models.CharField(_("Referrer pattern"), blank=True, max_length=255,
         help_text="All auto created referrers containing this pattern will be associated with this campaign")
 
@@ -32,9 +37,13 @@ class Campaign(models.Model):
 
 class Referrer(models.Model):
     name = models.CharField(_("Name"), max_length=255, unique=True)
+    display_name = models.CharField(_("Display Name"), max_length=255, blank=True, null=True,
+                                    help_text=_("This is an optional second name, useful for things like displaying"))
     description = models.TextField(_("Description"), blank=True, null=True)
     creation_date = models.DateTimeField(_("Creation date"), auto_now_add=True)
     campaign = models.ForeignKey(Campaign, verbose_name=_("Campaign"), related_name='referrers', blank=True, null=True)
+    campaign_only = models.BooleanField(verbose_name=_("Campaign Only"), default=False,
+                                   help_text=_("Should this referrer only count if it has a campaign?"))
 
     class Meta:
         ordering = ['name']
@@ -57,6 +66,20 @@ class Referrer(models.Model):
                 self.campaign = campaign
                 self.save()
                 break
+
+    def is_active(self):
+        if not self.campaign_only:
+            return True
+        if self.campaign is None:
+            return False
+        now = timezone.now()
+        campaign = self.campaign
+        if campaign.start_date and campaign.start_date >= now:
+            return False
+        if campaign.end_date and campaign.end_date <= now:
+            return False
+        return True
+
 
 
 class UserReferrerManager(models.Manager):
