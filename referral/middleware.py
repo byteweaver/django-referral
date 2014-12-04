@@ -21,3 +21,5 @@ class ReferrerMiddleware():
                 if referrer is not None:
                     if referrer.is_active():
                         request.session[settings.SESSION_KEY] = referrer.pk
+                    else:
+                        request.session[settings.SESSION_KEY] = None
