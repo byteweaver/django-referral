@@ -8,7 +8,7 @@ class ReferrerMiddleware():
             referrer = None
             referrer_name = request.GET.get(settings.GET_PARAMETER, '').lower()
             try:
-                referrer = Referrer.objects.get(name=referrer_name)
+                referrer = Referrer.objects.get(name__iexact=referrer_name)
             except Referrer.DoesNotExist:
                 if settings.AUTO_CREATE:
                     referrer = Referrer(name=referrer_name)
