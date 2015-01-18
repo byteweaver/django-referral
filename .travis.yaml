@@ -1,0 +1,13 @@
+language: python
+install:
+  - "pip install tox"
+script:
+  - "tox"
+env:
+  - "py34-1.7.X"
+  - "py27-1.7.X"
+  - "py34-1.6.X"
+  - "py27-1.6.X"
+  - "py34-1.5.X"
+  - "py27-1.5.X"
+  - "py27-1.4.X"
