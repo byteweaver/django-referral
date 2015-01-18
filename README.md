@@ -1,5 +1,7 @@
 # django-referral
 
+![build status](https://travis-ci.org/byteweaver/django-referral.png)
+
 A small django application for marketing using referral links
 
 ## What is this app good for?
