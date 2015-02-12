@@ -84,14 +84,19 @@ The name of the session key that will hold the detected referrer
 
 ###REFERRAL_AUTO_CREATE
 
-Defines weather unknown referrers shall be autocreated
+Defines whether unknown referrers shall be autocreated
 
 	Default: True
 
 ###REFERRAL_AUTO_ASSOCIATE
-Defines weather referrest should be associated to campaigns automatically using patterns
+Defines whether referrers should be associated to campaigns automatically using patterns
 
 	Default: True
+
+###REFERRAL_CASE_SENSITIVE
+Defines whether or referrer names are case-sensitive or not.
+
+  Default: False
 
 ## Testing
 
