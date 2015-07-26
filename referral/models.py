@@ -31,6 +31,7 @@ class Campaign(models.Model):
 
 
 class Referrer(models.Model):
+    user = models.ForeignKey(User, related_name='referrers', null=True)
     name = models.CharField(_("Name"), max_length=255, unique=True)
     description = models.TextField(_("Description"), blank=True, null=True)
     creation_date = models.DateTimeField(_("Creation date"), auto_now_add=True)
