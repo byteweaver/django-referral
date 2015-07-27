@@ -14,3 +14,6 @@ AUTO_ASSOCIATE = getattr(settings, 'REFERRAL_AUTO_ASSOCIATE', True)
 
 # If this is set to True, referral names will be case-sensitive.
 CASE_SENSITIVE = getattr(settings, 'REFERRAL_CASE_SENSITIVE', False)
+
+# The default name to use for the default campaign.
+REFERRAL_DEFAULT_CAMPAIGN_NAME = getattr(settings, 'REFERRAL_DEFAULT_CAMPAIGN_NAME', 'Default')

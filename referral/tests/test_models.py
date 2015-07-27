@@ -1,7 +1,6 @@
 from django.http import HttpRequest
 from django.test import TestCase
-
-from referral.models import UserReferrer
+from referral.models import UserReferrer, Referrer
 from referral import settings
 from referral.tests.factories import CampaignFactory, ReferrerFactory, UserReferrerFactory, UserFactory
 
@@ -34,6 +33,12 @@ class ReferrerTestCase(TestCase):
         campaign = CampaignFactory(pattern="Test Referrer")
         obj.match_campaign()
         self.assertEqual(obj.campaign, campaign)
+
+    def test_manager_create_default(self):
+        user = UserFactory()
+        CampaignFactory(name=settings.REFERRAL_DEFAULT_CAMPAIGN_NAME)
+        Referrer.objects.create_default(user)
+        self.assertTrue(len(user.referrers.all()), 1)
 
 
 class UserReferrerTestCase(TestCase):
