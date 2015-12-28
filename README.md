@@ -26,7 +26,7 @@ lead him to your website.
 * django 1.7 migrations + legacy south support
 * No dependencies
 * 100% Test coverage
-* Supports django 1.4 - 1.7
+* Supports django 1.4 - 1.8
 * supports python 2 + 3
 
 ## Download
