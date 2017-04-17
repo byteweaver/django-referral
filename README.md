@@ -70,30 +70,30 @@ Since django-referral uses django's session middleware make sure you add it afte
 
 ## Settings
 
-###REFERRAL_GET_PARAMETER
+### REFERRAL_GET_PARAMETER
 
 The name of the GET parameter used.
 
 	Default: "ref"
 
-###REFERRAL_SESSION_KEY
+### REFERRAL_SESSION_KEY
 
 The name of the session key that will hold the detected referrer
 
 	Default: "referrer"
 
-###REFERRAL_AUTO_CREATE
+### REFERRAL_AUTO_CREATE
 
 Defines whether unknown referrers shall be autocreated
 
 	Default: True
 
-###REFERRAL_AUTO_ASSOCIATE
+### REFERRAL_AUTO_ASSOCIATE
 Defines whether referrers should be associated to campaigns automatically using patterns
 
 	Default: True
 
-###REFERRAL_CASE_SENSITIVE
+### REFERRAL_CASE_SENSITIVE
 Defines whether or referrer names are case-sensitive or not.
 
   Default: False
