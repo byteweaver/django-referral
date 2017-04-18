@@ -1,3 +1,5 @@
+import random
+import string
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -30,11 +32,22 @@ class Campaign(models.Model):
     count_users.short_description = _("User count")
 
 
+class ReferrerManager(models.Manager):
+    def create_default(self, user):
+        # TODO: Make this ref_name generation customizable?
+        ref_name = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(8))
+        Referrer.objects.create(user=user,
+                                name=ref_name,
+                                campaign=Campaign.objects.get(name=settings.REFERRAL_DEFAULT_CAMPAIGN_NAME))
+
+
 class Referrer(models.Model):
+    user = models.ForeignKey(User, related_name='referrers', null=True)
     name = models.CharField(_("Name"), max_length=255, unique=True)
     description = models.TextField(_("Description"), blank=True, null=True)
     creation_date = models.DateTimeField(_("Creation date"), auto_now_add=True)
     campaign = models.ForeignKey(Campaign, verbose_name=_("Campaign"), related_name='referrers', blank=True, null=True)
+    objects = ReferrerManager()
 
     class Meta:
         ordering = ['name']
