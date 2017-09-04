@@ -1,10 +1,14 @@
-from django.utils.deprecation import MiddlewareMixin
-
 from . import settings
 from .models import Referrer
 
 
-class ReferrerMiddleware(MiddlewareMixin):
+class ReferrerMiddleware(object):
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        return self.get_response(request)
+
     def process_request(self, request):
         if settings.GET_PARAMETER in request.GET:
             referrer = None

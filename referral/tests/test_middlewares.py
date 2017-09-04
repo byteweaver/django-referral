@@ -9,10 +9,10 @@ class ReferrerMiddlewareTest(TestCase):
     rf = RequestFactory()
 
     def setUp(self):
-        self.ref_middleware = ReferrerMiddleware()
         self.request = self.rf.get('/custom_url')
         # convert request.GET to mutable QueryDict instance
         self.request.GET = self.request.GET.copy()
+        self.ref_middleware = ReferrerMiddleware(self.request)
         self.request.session = {}
 
     def test_process_request_no_ref(self):
