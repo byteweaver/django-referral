@@ -3,4 +3,4 @@
 
 Django>=1.6.0
 coverage
-factory-boy==2.4.1
+factory-boy>=2.4.1
