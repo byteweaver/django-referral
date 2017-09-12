@@ -3,24 +3,31 @@ import factory
 from referral.compat import User
 from referral.models import Campaign, Referrer, UserReferrer
 
+
 class UserFactory(factory.django.DjangoModelFactory):
-    FACTORY_FOR = User
+    class Meta:
+        model = User
+
 
 class CampaignFactory(factory.django.DjangoModelFactory):
-    FACTORY_FOR = Campaign
+    class Meta:
+        model = Campaign
 
     name = factory.Sequence(lambda n: "Test Campaign %s" % n)
     description = "Some long test description"
 
+
 class ReferrerFactory(factory.django.DjangoModelFactory):
-    FACTORY_FOR = Referrer
+    class Meta:
+        model = Referrer
 
     name = factory.Sequence(lambda n: "Test Referrer %s" % n)
     description = "Some long test description"
 
+
 class UserReferrerFactory(factory.django.DjangoModelFactory):
-    FACTORY_FOR = UserReferrer
+    class Meta:
+        model = UserReferrer
 
     user = factory.LazyAttribute(lambda a: UserFactory())
     referrer = factory.LazyAttribute(lambda a: ReferrerFactory())
-
