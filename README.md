@@ -34,11 +34,11 @@ lead him to your website.
 ### using pip
 
 	pip install django-referral
-	
+
 ### github
 
 	https://github.com/byteweaver/django-referral
-	
+
 ## Integration
 
 ### 1. Add referral to your INSTALLED_APPS
@@ -117,6 +117,10 @@ For full test in all supported environment (requires tox)
 	tox
 
 ## Changelog
+### V1.1.0
+* add django 1.8 to 1.11 support
+* (There seems to be an issue with python 3.5+ on travis right now)
+
 ### V1.0.0
 * add django 1.7 support
 * add pyton3 support
