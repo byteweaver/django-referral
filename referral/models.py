@@ -72,7 +72,10 @@ class UserReferrerManager(models.Manager):
 
 class UserReferrer(models.Model):
     user = models.OneToOneField(User, verbose_name=_("User"), related_name='user_referrer')
-    referrer = models.ForeignKey(Referrer, verbose_name=_("Referrer"), related_name='users')
+    referrer = models.ForeignKey(
+        Referrer, verbose_name=_("Referrer"), related_name='users'
+        on_delete=django.db.models.deletion.CASCADE
+    )
 
     objects = UserReferrerManager()
 
