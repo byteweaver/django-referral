@@ -2,7 +2,8 @@
 *.pot
 *.pyc
 local_settings.py
-/env/
+/.venv/
+django_referral.egg-info/
 *.swp
 coverage/
 .coverage
