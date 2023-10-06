@@ -7,7 +7,7 @@ class ReferrerMiddleware(MiddlewareMixin):
     def process_request(self, request):
         if settings.GET_PARAMETER in request.GET:
             referrer = None
-            referrer_name = request.GET.get(settings.GET_PARAMETER, '').strip()
+            referrer_name = request.GET.get(settings.GET_PARAMETER, "").strip()
             if not referrer_name:
                 return
             try:

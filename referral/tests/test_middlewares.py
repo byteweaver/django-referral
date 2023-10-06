@@ -38,8 +38,8 @@ class ReferrerMiddlewareTest(TestCase):
         self.ref_middleware.process_request(self.request)
         self.assertEqual(Referrer.objects.count(), 2)
 
-        self.assertEqual(Referrer.objects.filter(name='new_ref').count(), 1)
-        self.assertEqual(Referrer.objects.filter(name='NEW_REF').count(), 1)
+        self.assertEqual(Referrer.objects.filter(name="new_ref").count(), 1)
+        self.assertEqual(Referrer.objects.filter(name="NEW_REF").count(), 1)
         settings.CASE_SENSITIVE = False
 
     def test_referral_case_insensitive(self):
