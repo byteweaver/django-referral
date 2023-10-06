@@ -3,7 +3,12 @@ from django.test import TestCase
 
 from referral.models import UserReferrer
 from referral import settings
-from referral.tests.factories import CampaignFactory, ReferrerFactory, UserReferrerFactory, UserFactory
+from referral.tests.factories import (
+    CampaignFactory,
+    ReferrerFactory,
+    UserReferrerFactory,
+    UserFactory,
+)
 
 
 class CampaignTestCase(TestCase):
@@ -43,7 +48,9 @@ class UserReferrerTestCase(TestCase):
 
     def test_repr(self):
         obj = UserReferrerFactory()
-        self.assertEqual(str(obj), "{} -> {}".format(obj.user.username, obj.referrer.name))
+        self.assertEqual(
+            str(obj), "{} -> {}".format(obj.user.username, obj.referrer.name)
+        )
 
     def test_manager_apply_referrer_no_ref(self):
         user = UserFactory()

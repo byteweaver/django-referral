@@ -9,17 +9,17 @@ class ReferrerInine(admin.TabularInline):
 
 
 class CampaignAdmin(admin.ModelAdmin):
-    list_display = ('name', 'count_users')
-    inlines = (ReferrerInine, )
+    list_display = ("name", "count_users")
+    inlines = (ReferrerInine,)
 
 
 class ReferrerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'campaign', 'creation_date', 'count_users')
+    list_display = ("name", "campaign", "creation_date", "count_users")
 
 
 class UserReferrerAdmin(admin.ModelAdmin):
-    list_display = ('user', 'referrer')
-    raw_id_fields = ('user',)
+    list_display = ("user", "referrer")
+    raw_id_fields = ("user",)
 
 
 admin.site.register(Campaign, CampaignAdmin)
