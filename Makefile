@@ -1,19 +1,16 @@
 VENV_FOLDER=.venv
-PIP_BIN=$(VENV_FOLDER)/bin/pip
+POETRY_BIN=poetry
 PYTHON_BIN=$(VENV_FOLDER)/bin/python
 COVERAGE_BINARY=$(VENV_FOLDER)/bin/coverage
 DJANGO_SETTINGS_MODULE='referral.tests.settings'
 
-all: environment requirements
-
-environment:
-	test -d "$(VENV_FOLDER)" || python -m venv $(VENV_FOLDER)
+all: requirements
 
 requirements:
-	$(PIP_BIN) install -r requirements.txt
+	$(POETRY_BIN) install
 
 test: requirements
-	$(PYTHON_BINARY) $(VENV_FOLDER)/bin/django-admin test --settings=referral.tests.settings
+	$(POETRY_BIN) run django-admin test --settings=referral.tests.settings
 
 coverage: requirements
 	$(COVERAGE_BINARY) erase
