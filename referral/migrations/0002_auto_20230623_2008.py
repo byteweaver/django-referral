@@ -14,7 +14,10 @@ class Migration(migrations.Migration):
             name="pattern",
             field=models.CharField(
                 blank=True,
-                help_text="All auto created referrers containing this pattern will be associated with this campaign",
+                help_text=(
+                    "All auto created referrers containing this pattern will be "
+                    "associated with this campaign"
+                ),
                 max_length=255,
                 verbose_name="Referrer pattern",
             ),

@@ -12,7 +12,10 @@ class Campaign(models.Model):
         _("Referrer pattern"),
         blank=True,
         max_length=255,
-        help_text="All auto created referrers containing this pattern will be associated with this campaign",
+        help_text=(
+            "All auto created referrers containing this pattern will be associated with"
+            " this campaign"
+        ),
     )
 
     class Meta:
