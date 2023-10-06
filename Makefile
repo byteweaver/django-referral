@@ -7,7 +7,7 @@ DJANGO_SETTINGS_MODULE='referral.tests.settings'
 all: environment requirements
 
 environment:
-	test -d "$(VENV_FOLDER)" || virtualenv --no-site-packages $(VENV_FOLDER)
+	test -d "$(VENV_FOLDER)" || python -m venv $(VENV_FOLDER)
 
 requirements:
 	$(PIP_BIN) install -r requirements.txt
