@@ -1,8 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from .compat import User
 from . import settings
+from .compat import User
 
 
 class Campaign(models.Model):

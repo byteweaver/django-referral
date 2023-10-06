@@ -1,13 +1,13 @@
 from django.http import HttpRequest
 from django.test import TestCase
 
-from referral.models import UserReferrer
 from referral import settings
+from referral.models import UserReferrer
 from referral.tests.factories import (
     CampaignFactory,
     ReferrerFactory,
-    UserReferrerFactory,
     UserFactory,
+    UserReferrerFactory,
 )
 
 

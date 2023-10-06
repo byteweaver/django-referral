@@ -1,5 +1,5 @@
-from django.conf import settings
 import django
+from django.conf import settings
 
 __all__ = ["User", "AUTH_USER_MODEL"]
 

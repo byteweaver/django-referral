@@ -1,6 +1,7 @@
+from django.utils.deprecation import MiddlewareMixin
+
 from . import settings
 from .models import Referrer
-from django.utils.deprecation import MiddlewareMixin
 
 
 class ReferrerMiddleware(MiddlewareMixin):
