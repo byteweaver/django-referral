@@ -1,4 +1,4 @@
-VENV_FOLDER=env
+VENV_FOLDER=.venv
 PIP_BIN=$(VENV_FOLDER)/bin/pip
 PYTHON_BIN=$(VENV_FOLDER)/bin/python
 COVERAGE_BINARY=$(VENV_FOLDER)/bin/coverage
