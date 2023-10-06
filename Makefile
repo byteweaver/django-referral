@@ -13,9 +13,9 @@ requirements:
 	$(PIP_BIN) install -r requirements.txt
 
 test: requirements
-	$(PYTHON_BINARY) env/bin/django-admin test --settings=referral.tests.settings
+	$(PYTHON_BINARY) $(VENV_FOLDER)/bin/django-admin test --settings=referral.tests.settings
 
 coverage: requirements
 		$(COVERAGE_BINARY) erase
-		$(COVERAGE_BINARY) run --branch --source=referral env/bin/django-admin test --settings=referral.tests.settings
+		$(COVERAGE_BINARY) run --branch --source=referral $(VENV_FOLDER)/bin/django-admin test --settings=referral.tests.settings
 		$(COVERAGE_BINARY) html
