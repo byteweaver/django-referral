@@ -1,4 +1,5 @@
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
+from django.http import HttpRequest
 
 from referral.middleware import ReferrerMiddleware
 from referral.models import Referrer
@@ -6,14 +7,10 @@ from referral import settings
 
 
 class ReferrerMiddlewareTest(TestCase):
-    rf = RequestFactory()
-
     def setUp(self):
-        self.request = self.rf.get('/custom_url')
-        # convert request.GET to mutable QueryDict instance
-        self.request.GET = self.request.GET.copy()
-        self.ref_middleware = ReferrerMiddleware(self.request)
+        self.request = HttpRequest()
         self.request.session = {}
+        self.ref_middleware = ReferrerMiddleware(self.request)
 
     def test_process_request_no_ref(self):
         self.ref_middleware.process_request(self.request)

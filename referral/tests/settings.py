@@ -46,13 +46,20 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'tests', 'static')
+MIDDLEWARE = MIDDLEWARE_CLASSES
 
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'tests', 'additional_static'),
-    ("prefix", os.path.join(BASE_DIR, 'tests', 'additional_static')),
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            'context_processors': [
+                'django.contrib.messages.context_processors.messages',
+                "django.contrib.auth.context_processors.auth",
+            ]
+        },
+    },
 ]
 
 # Cache and database
