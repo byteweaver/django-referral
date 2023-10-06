@@ -15,6 +15,7 @@ django = "^4.2.6"
 
 [tool.poetry.group.dev.dependencies]
 factory-boy = "^3.3.0"
+coverage = "^7.3.2"
 
 [build-system]
 requires = ["poetry-core"]
