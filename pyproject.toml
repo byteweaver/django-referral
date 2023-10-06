@@ -6,6 +6,8 @@ authors = ["Fabian <ihl.fabian@gmail.com>", "Richard <richard@stromer.org>"]
 license = "MIT"
 readme = "README.md"
 
+packages = [{ include = "referral" }]
+
 [tool.poetry.dependencies]
 python = "^3.11"
 django = "^4.2.6"
