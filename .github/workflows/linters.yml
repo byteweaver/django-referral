@@ -38,8 +38,10 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v4
         with:
-          cache: "pip"
+          cache: "poetry"
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: poetry install
       - name: pyright
         uses: jakebailey/pyright-action@v1
