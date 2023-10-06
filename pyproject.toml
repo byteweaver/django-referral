@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-referral"
-version = "1.2.0"
+version = "2.0.0b0"
 description = "A small django application for marketing using referral links."
 authors = ["Fabian <ihl.fabian@gmail.com>", "Richard <richard@stromer.org>"]
 license = "MIT"
