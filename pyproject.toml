@@ -10,7 +10,7 @@ packages = [{ include = "referral" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-django = "^4.2.6"
+django = "^4.2.7"
 
 
 [tool.poetry.group.dev.dependencies]
